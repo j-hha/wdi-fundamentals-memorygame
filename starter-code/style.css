@@ -1,3 +1,96 @@
 /* This is a multi-line
 comment. Add your CSS code
 from Unit 1 - 5 below  */
+body {
+  font-family: 'Helvetica', sans-serif;
+  font-size: 16px;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  color: rgb(2, 132, 130);
+  font-family: 'Faster One', cursive;
+  font-size: 100px;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  color: #ffd700;
+  font-size: 22px;
+  text-align: center;
+}
+
+h3 {
+  color: teal;
+  font-size: 18px;
+  text-align: center;
+  padding: 0;
+  margin-bottom: 50px;
+}
+
+nav {
+  background-color: #808080;
+}
+
+nav a {
+  background-color: #ffbf00;
+  color: #fff;
+  padding: 35px;
+  display: block;
+  float: left;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: #ee5f3c;
+}
+
+.clearfix:after {
+        visibility: hidden;
+        display: block;
+        content: " ";
+        clear: both;
+        height: 0;
+        font-size: 0;
+      }
+
+header {
+  width: 100%;
+}
+
+section {
+  font-size: 16px;
+  padding: 20px;
+}
+
+.board {
+  display: inline-block;
+  width: 50%;
+  height: 50%;
+}
+
+.card {
+  border: 1px solid rgb(0,0,0);
+  width: 150px;
+  height: 200px;
+  border-radius: 10px;
+  background-color: #FFFF00;
+  float: left;
+  margin: 8%
+}
+
+footer {
+  width: 100%;
+  background-color: #808080;
+  padding: 2opx;
+}
+
+span {
+  color: #ff0000;
+}
