@@ -6,6 +6,12 @@ var cardOne = "queen",
     cardFour = "king";
 
 /* testing for equality:
+- get value of first card
+- get value of second card
+- compare both cards
+- if 1st card == 2nd card => match
+- if 1st card != 2nd card => no match
+
        - comparing cardOne and cardTwo
        - both have the value "queen"
        --> this should produce 'true' */
