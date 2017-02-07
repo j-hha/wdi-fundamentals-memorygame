@@ -21,3 +21,17 @@ var cardOne = "queen",
        - cardOne = "queen", cardThree = "king"
        --> this should produce 'false' */
     console.log(cardOne == cardThree);
+
+    if (cardOne === cardFour) {
+      alert("You found a match!");
+    }
+    else {
+      alert("Sorry, try again.");
+    }
+
+    if (cardOne === cardTwo) {
+      alert("You found a match!");
+    }
+    else {
+      alert("Sorry, try again.");
+    }
