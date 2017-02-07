@@ -5,6 +5,17 @@ var cardOne = "queen",
     cardThree = "king",
     cardFour = "king";
 
+var createCards = function() {
+  for(var i=0; i<4; i++) {
+    var gameBoard = document.getElementById("game-board"),
+        newDiv = document.createElement("div");
+        newDiv.className = "card"
+        gameBoard.appendChild(newDiv);
+    }
+  };
+
+  createCards();
+
 /* testing for equality:
 - get value of first card
 - get value of second card
