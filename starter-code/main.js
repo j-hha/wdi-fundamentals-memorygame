@@ -5,8 +5,7 @@
 var cards = [],
     cardsInPlay = [],
     currentScore = document.getElementById("currentScore"),
-    score = 0;
-
+    score = 0,
     cards = ["queen", "king", "queen", "king"];
 
     createCards = function() {
@@ -17,11 +16,11 @@ var cards = [],
             newCard.setAttribute("data-card", cards[i]);
             newCard.addEventListener("click", isTwoCards);
             gameBoard.appendChild(newCard);
-            console.log(newCard);
           }
         };
 
         createCards();
+
 
         isMatch = function() {
           if (cardsInPlay[0] === cardsInPlay[1]) {
@@ -30,7 +29,7 @@ var cards = [],
             currentScore.innerHTML = score;
           }
           else {
-            alert("Sorry, try again.");
+            alert("Sorry, no match. Flip cards back over and then try again.");
           }
         };
 
@@ -65,7 +64,6 @@ var cards = [],
             // clear cards in play array for your next try
             cardsInPlay = [];
           }
-
 
           //Checks value of card, displays corresponding pic and clears styles for back of card)
           if (this.getAttribute('data-card') === 'king') {
