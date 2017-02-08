@@ -3,7 +3,10 @@
 //Game logic
 
 var cards = [],
-    cardsInPlay = [];
+    cardsInPlay = [],
+    currentScore = document.getElementById("currentScore"),
+    score = 0;
+
     cards = ["queen", "queen", "king", "king"];
 
     createCards = function() {
@@ -22,7 +25,9 @@ var cards = [],
 
         isMatch = function() {
           if (cardsInPlay[0] === cardsInPlay[1]) {
-            alert("You found a match!");
+            score += 1;
+            alert("You found a match! Your current score is " + score);
+            currentScore.innerHTML = score;
           }
           else {
             alert("Sorry, try again.");
