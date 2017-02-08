@@ -55,7 +55,7 @@ nav a {
   text-decoration: none;
 }
 
-nav a:hover {
+nav a:hover:not(.selected) {
   background-color: #ee5f3c;
 }
 
