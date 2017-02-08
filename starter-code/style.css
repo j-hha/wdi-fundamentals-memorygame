@@ -3,7 +3,7 @@ comment. Add your CSS code
 from Unit 1 - 5 below  */
 body {
   font-family: 'Helvetica', sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   text-align: center;
 }
 
@@ -29,17 +29,17 @@ h1 {
 }
 
 h2 {
-  color: #ffd700;
-  font-size: 22px;
-  text-align: center;
-}
-
-h3 {
   color: teal;
   font-size: 18px;
   text-align: center;
   padding: 0;
   margin-bottom: 50px;
+}
+
+h3 {
+  color: #ffd700;
+  font-size: 22px;
+  text-align: center;
 }
 
 nav {
@@ -73,7 +73,6 @@ header {
 }
 
 section {
-  font-size: 16px;
   padding: 20px;
 }
 
@@ -100,9 +99,9 @@ section {
 aside {
   display: inline-block;
   float: left;
-  padding: 0 10px;
+  padding: 10px;
   border-radius: 10px;
-  background-color: #808080;
+  background-color: #ccc;
   box-shadow: 2px 2px 6px #808080;
 }
 
@@ -110,6 +109,7 @@ footer {
   width: 100%;
   background-color: #808080;
   padding: 2px;
+  font-size: 16px;
 }
 
 span {

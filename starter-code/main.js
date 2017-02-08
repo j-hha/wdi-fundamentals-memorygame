@@ -1,11 +1,10 @@
-// console.log("JS file is connected to HTML! Woo!")
-
 //Game logic
-
 var cards = [],
     cardsInPlay = [],
     currentScore = document.getElementById("currentScore"),
     score = 0,
+    reset = document.getElementById("reset");
+
     cards = ["queen", "king", "queen", "king"];
 
     createCards = function() {
@@ -78,3 +77,10 @@ var cards = [],
           }
         }
       }
+
+      var resetScore = function functionName() {
+        score = 0;
+        currentScore.innerHTML = score;
+      };
+
+      reset.addEventListener("click", resetScore);
