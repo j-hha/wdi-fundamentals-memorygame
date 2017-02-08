@@ -11,6 +11,14 @@ body {
   box-sizing: border-box;
 }
 
+a {
+  color: rgb(0, 0, 0);
+}
+
+a:hover {
+  color: rgb(255, 255, 255);
+}
+
 h1 {
   color: rgb(2, 132, 130);
   font-family: 'Faster One', cursive;
@@ -89,10 +97,19 @@ section {
   height: 200px;
 }
 
+aside {
+  display: inline-block;
+  float: left;
+  padding: 0 10px;
+  border-radius: 10px;
+  background-color: #808080;
+  box-shadow: 2px 2px 6px #808080;
+}
+
 footer {
   width: 100%;
   background-color: #808080;
-  padding: 2opx;
+  padding: 2px;
 }
 
 span {

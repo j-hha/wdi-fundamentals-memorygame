@@ -7,7 +7,7 @@ var cards = [],
     currentScore = document.getElementById("currentScore"),
     score = 0;
 
-    cards = ["queen", "queen", "king", "king"];
+    cards = ["queen", "king", "queen", "king"];
 
     createCards = function() {
       for(var i=0, length=cards.length; i<length; i++) {
@@ -36,12 +36,21 @@ var cards = [],
 
         //checks to see if there are cards in play
       function isTwoCards() {
-        //checks to see if the card has already been flipped
-        //prevents false "found match" message when same card is beeing clicked twice
+        /* conditional prevents false "found match" message when same card is
+        beeing clicked twice and flips card to backside again*/
         if (this.getAttribute('clicked') === 'true') {
-          alert("You already flipped this card!");
+          //resets attributes to match styles for back of card
+          this.innerHTML = ''
+          this.style.backgroundColor = '#FFFF00';
+          this.style.border = '1px solid rgb(0,0,0)';
+          //sets a clicked = false attribute for clicked card
+          this.setAttribute('clicked', 'false');
+          // clear cards in play array for your next try
+          cardsInPlay = [];
         }
         else {
+          //sets a clicked = true attribute for clicked card
+          this.setAttribute('clicked', 'true');
           // add card to array of cards in play
           // 'this' hasn't been covered in this pre-work, but
           // for now, just know it gives you access to the card the user clicked on
@@ -57,8 +66,6 @@ var cards = [],
             cardsInPlay = [];
           }
 
-          //sets a clicked = true attribute for clicked card
-          this.setAttribute('clicked', 'true');
 
           //Checks value of card, displays corresponding pic and clears styles for back of card)
           if (this.getAttribute('data-card') === 'king') {
@@ -114,37 +121,3 @@ var activateElement = function(element) {
     }
   }
 };
-
-
-
-/* testing for equality:
-- get value of first card
-- get value of second card
-- compare both cards
-- if 1st card == 2nd card => match
-- if 1st card != 2nd card => no match
-
-       - comparing cardOne and cardTwo
-       - both have the value "queen"
-       --> this should produce 'true'
-    console.log(cardOne == cardTwo);
-
-    - comparing cardOne and cardThree
-       - cardOne = "queen", cardThree = "king"
-       --> this should produce 'false'
-    console.log(cardOne == cardThree);
-
-    if (cardOne === cardFour) {
-      alert("You found a match!");
-    }
-    else {
-      alert("Sorry, try again.");
-    }
-
-    if (cardOne === cardTwo) {
-      alert("You found a match!");
-    }
-    else {
-      alert("Sorry, try again.");
-    }
-*/

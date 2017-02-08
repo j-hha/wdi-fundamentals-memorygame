@@ -8,15 +8,15 @@
   </head>
   <body>
     <nav class="clearfix">
-      <a href="#instructions">Instructions</a>
-      <a href="#game">Game</a>
+      <a class="navElements" href="#instructions">Instructions</a>
+      <a class="navElements" href="#game">Game</a>
     </nav>
     <hr>
     <header>
       <h1>Memory Game</h1>
       <h3>PLAY this Game! It's awesome.</h3>
     </header>
-    <section>
+    <section class="content">
       <h2>Instructions</h2>
         <p>Concentration, also known as Match Match, Memory, Pelmanism,
           Shinkei-suijaku, Pexeso, or Pairs, is a card game in which all of the
@@ -24,7 +24,7 @@
           over each turn. The object of the game is to turn over pairs of matching
           cards.</p>
     </section>
-    <div id="game-board" class="board">
+    <div id="game-board" class="board" class="content">
       <!-- old divs containing placeholder cards
       <div class="card"></div>
       <div class="card"></div>
@@ -32,12 +32,14 @@
       <div class="card"></div>
       -->
     </div>
-      <p>Your current score is: <span id="currentScore"></span></p>
+    <aside>
+      <p>Your current score is: <span id="currentScore">0</span></p>
+    </aside>
     <footer>
       <p>Created with &#9829; by <span>GA</span>.</p>
-      <p><small>Want to find out more about the person who built this website?
+      <p>Want to find out more about the person who built this website?
         Check out my profile on <a href="http://www.linkedin.com/in/hanna-hauck-85158b20">LinkedIn</a>.
-      </small></p>
+      </p>
     </footer>
    <script src="main.js"></script>
   </body>
