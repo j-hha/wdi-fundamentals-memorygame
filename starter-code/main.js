@@ -56,6 +56,7 @@ var cards = [],
           }*/
         };
 
+
         //checks to see if there are cards in play
       function isTwoCards() {
         //Checks value of card, displays corresponding pic and clears styles for back of card)
@@ -69,17 +70,17 @@ var cards = [],
           this.style.backgroundColor = 'transparent';
           this.style.border = '0';
         }
-
         /* conditional prevents false "found match" message when same card is
-        beeing clicked twice and instead flips card to backside again */
+        beeing clicked twice in a row and instead flips card to backside again */
         if (this.getAttribute('clicked') === 'true') {
           // would be used in combination with the automatical reset version:
           // return;
           //resets attributes to match styles for back of card
-          this.innerHTML = ''
+          this.setAttribute('clicked', 'false');
+          this.innerHTML = '';
           this.style.backgroundColor = '#FFFF00';
           this.style.border = '1px solid rgb(0,0,0)';
-          this.setAttribute('clicked', 'false');
+          cardsInPlay = [];
         }
 
         else {
