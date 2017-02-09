@@ -3,14 +3,16 @@ var cards = [],
     cardsInPlay = [],
     currentScore = document.getElementById("currentScore"),
     score = 0,
-    reset = document.getElementById("reset");
+    reset = document.getElementById("reset"),
+    gameBoard = document.getElementById("game-board");
 
     cards = ["queen", "king", "queen", "king"];
 
+// creates cards on gameBoard
     createCards = function() {
+      gameBoard.innerHTML = "";
       for(var i=0, length=cards.length; i<length; i++) {
-        var gameBoard = document.getElementById("game-board"),
-            newCard = document.createElement("div");
+        var newCard = document.createElement("div");
             newCard.className = "card";
             newCard.setAttribute("data-card", cards[i]);
             newCard.addEventListener("click", isTwoCards);
@@ -20,13 +22,17 @@ var cards = [],
 
         createCards();
 
-
+        //compares two cards
         isMatch = function() {
+          // if clicked cards have the same value corresponding alert message
+          // is displayed and score is updated
           if (cardsInPlay[0] === cardsInPlay[1]) {
             score += 1;
             alert("You found a match! Your current score is " + score);
             currentScore.innerHTML = score;
           }
+          // else: clicked cards do not have the same value & corresponding alert
+          // message is displayed and score
           else {
             alert("Sorry, no match. Flip cards back over and then try again.");
           }
@@ -35,7 +41,7 @@ var cards = [],
         //checks to see if there are cards in play
       function isTwoCards() {
         /* conditional prevents false "found match" message when same card is
-        beeing clicked twice and flips card to backside again*/
+        beeing clicked twice and flips card to backside again */
         if (this.getAttribute('clicked') === 'true') {
           //resets attributes to match styles for back of card
           this.innerHTML = ''
@@ -78,9 +84,11 @@ var cards = [],
         }
       }
 
+      //resets score to zero if rest button is clicked
       var resetScore = function functionName() {
         score = 0;
         currentScore.innerHTML = score;
       };
 
       reset.addEventListener("click", resetScore);
+      reset.addEventListener("click", createCards);
