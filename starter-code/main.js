@@ -8,9 +8,13 @@ var cards = [],
 
     cards = ["queen", "king", "queen", "king"];
 
-// creates cards on gameBoard
+//creates cards on gameBoard
     createCards = function() {
+      //resets gameboard and score
       gameBoard.innerHTML = "";
+      score = 0;
+      currentScore.innerHTML = score;
+      //creates cards on gameBoard
       for(var i=0, length=cards.length; i<length; i++) {
         var newCard = document.createElement("div");
             newCard.className = "card";
@@ -90,5 +94,4 @@ var cards = [],
         currentScore.innerHTML = score;
       };
 
-      reset.addEventListener("click", resetScore);
       reset.addEventListener("click", createCards);
