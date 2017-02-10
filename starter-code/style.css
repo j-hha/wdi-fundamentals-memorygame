@@ -92,12 +92,17 @@ section {
   margin: 8%;
 }
 
+.front {
+  background-color: transparent;
+  border: 0;
+}
+
 .card img {
   height: 200px;
   margin: auto;
 }
 
-#reset {
+#resetButton {
   padding: 10px;
   border-radius: 10px;
   border: 0;
@@ -107,11 +112,11 @@ section {
   font-size: 16px;
 }
 
-#reset:hover {
+#resetButton:hover {
   background-color: #ee5f3c;
 }
 
-#reset:active {
+#resetButton:active {
   background-color: #cc3612;
 }
 
