@@ -16,22 +16,25 @@ var createCards = function() {
 
 //This function shuffles the items in the cards array --> cards are rearranged
 //every time the user hits reset
-var shuffleArray = function() {
-  //loops over the array
-  for (var i = 0, length = cards.length; i < length; i++) {
-    //creates a random whole number
-    var x = Math.round(Math.random() * length);
-    //if random number is identical to the current index,
-    //the item at this index is saved in the variable itemToShuffl, removed
-    // and then added back in at the end of the array
-    if (x === i) {
-      var itemToShuffle = cards[i];
-      cards.splice(x, 1);
-      cards.push(itemToShuffle);
-    }
+var shuffleArray = function(original) {
+  // empty array to push items from ordered array into in random order
+  shuffled = [];
+  // loops over array for the length of the array to be shuffled
+  for (var i = original.length; i > 0; i--) {
+    // creates a random whole number between 0 and the numeric value of the current
+    // last index of the array (changes since items are constantly being sliced out)
+    var randomNumber = Math.round(Math.random() * (original.length-1));
+    // pushes item at the index of randomly created number into empty array
+    shuffled.push(original[randomNumber]);
+    // removes item at the index of randomly created number from old array
+    original.splice(randomNumber, 1);
   }
+  return shuffled;
 };
-shuffleArray();
+
+shuffleArray(cards);
+
+cards = shuffled;
 
   //creates cards on gameBoard
   for(var i=0, length=cards.length; i<length; i++) {
