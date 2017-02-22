@@ -1,24 +1,44 @@
 //Game logic
-var cards = ["queen", "king", "queen", "king"],
+var cards = ['queen', 'king', 'queen', 'king'],
     cardsInPlay = [],
-    tallyElement = document.getElementById("tallyElement"),
+    tallyElement = document.getElementById('tallyElement'),
     score = 0,
-    resetButton = document.getElementById("resetButton"),
-    gameBoard = document.getElementById("game-board");
+    resetButton = document.getElementById('resetButton'),
+    gameBoard = document.getElementById('game-board');
 
 //creates cards on gameBoard
 var createCards = function() {
   //this function is also used to reset the gameBoard and score
   //when the resetButton is clicked
-  gameBoard.innerHTML = "";
+  gameBoard.innerHTML = '';
   score = 0;
   tallyElement.innerHTML = score;
+
+//This function shuffles the items in the cards array --> cards are rearranged
+//every time the user hits reset
+var shuffleArray = function() {
+  //loops over the array
+  for (var i = 0, length = cards.length; i < length; i++) {
+    //creates a random whole number
+    var x = Math.round(Math.random() * length);
+    //if random number is identical to the current index,
+    //the item at this index is saved in the variable itemToShuffl, removed
+    // and then added back in at the end of the array
+    if (x === i) {
+      var itemToShuffle = cards[i];
+      cards.splice(x, 1);
+      cards.push(itemToShuffle);
+    }
+  }
+};
+shuffleArray();
+
   //creates cards on gameBoard
   for(var i=0, length=cards.length; i<length; i++) {
-    var newCard = document.createElement("div");
-    newCard.className = "card";
-    newCard.setAttribute("data-card", cards[i]);
-    newCard.addEventListener("click", isTwoCards);
+    var newCard = document.createElement('div');
+    newCard.className = 'card';
+    newCard.setAttribute('data-card', cards[i]);
+    newCard.addEventListener('click', isTwoCards);
     gameBoard.appendChild(newCard);
   }
 };
@@ -30,12 +50,12 @@ var createCards = function() {
    if (cardsInPlay[0] === cardsInPlay[1]) {
      score += 1;
      tallyElement.innerHTML = score;
-     alert("You found a match! Your current score is " + score);
+     alert('You found a match! Your current score is ' + score);
    }
    // else: clicked cards do not have the same value & corresponding alert
    // message is displayed
    else {
-     alert("Sorry, no match. Flip cards back over and then try again.");
+     alert('Sorry, no match. Flip cards back over and then try again.');
    }
 
    /* This code is intended to reset all cards automatically after isMatch() has
@@ -47,9 +67,7 @@ var createCards = function() {
       for(j=0; j<allCards.length; j++) {
         //resets attributes to match styles for back of card
         allCards[j].innerHTML = '';
-        allCards[j].style.backgroundColor = '#FFFF00';
-        allCards[j].style.border = '1px solid rgb(0,0,0)';
-        allCards[j].setAttribute('clicked', 'false');
+        allCards[j].className = 'card';
       } */
     };
 
@@ -58,14 +76,14 @@ var createCards = function() {
       //Checks value of card, displays corresponding pic)
       if (this.getAttribute('data-card') === 'king') {
         this.innerHTML = '<img src="spades-884197_640.png" alt="King of Spades" />'
-        this.className = "card front";
+        this.className = 'card front';
       }
       else {
         this.innerHTML = '<img src="hearts-884201_640.png" alt="Queen of Hearts" />'
-        this.className = "card front";
+        this.className = 'card front';
       }
 
-      /* conditional prevents false "found match" message when same card is
+      /* conditional prevents false 'found match' message when same card is
       being clicked twice in a row and instead flips card to backside again */
       if (this.getAttribute('clicked') === 'true') {
         /* would be used in combination with the automatic reset version:
@@ -73,7 +91,7 @@ var createCards = function() {
         //resets attributes to match styles for back of card
         this.setAttribute('clicked', 'false');
         this.innerHTML = '';
-        this.className = "card";
+        this.className = 'card';
         // removes last card from cardsInPlay for new try
         cardsInPlay.pop();
       }
@@ -99,4 +117,4 @@ var createCards = function() {
     createCards();
 
     //resets whole gameBoard and score tally
-    resetButton.addEventListener("click", createCards);
+    resetButton.addEventListener('click', createCards);
