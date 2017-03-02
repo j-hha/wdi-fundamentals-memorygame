@@ -4,7 +4,24 @@ var cards = ['queen', 'king', 'queen', 'king'],
     tallyElement = document.getElementById('tallyElement'),
     score = 0,
     resetButton = document.getElementById('resetButton'),
-    gameBoard = document.getElementById('game-board');
+    gameBoard = document.getElementById('game-board'),
+    //This function shuffles the items in the cards array --> cards are rearranged
+    //every time the user hits reset
+    shuffleArray = function(original) {
+      // empty array to push items from ordered array into in random order
+      shuffled = [];
+      // loops over array for the length of the array to be shuffled
+      for (var i = original.length; i > 0; i--) {
+        // creates a random whole number between 0 and the numeric value of the current
+        // last index of the array (changes since items are constantly being sliced out)
+        var randomNumber = Math.round(Math.random() * (original.length-1));
+        // pushes item at the index of randomly created number into empty array
+        shuffled.push(original[randomNumber]);
+        // removes item at the index of randomly created number from old array
+        original.splice(randomNumber, 1);
+      }
+      return shuffled;
+    };
 
 //creates cards on gameBoard
 var createCards = function() {
@@ -14,27 +31,8 @@ var createCards = function() {
   score = 0;
   tallyElement.innerHTML = score;
 
-//This function shuffles the items in the cards array --> cards are rearranged
-//every time the user hits reset
-var shuffleArray = function(original) {
-  // empty array to push items from ordered array into in random order
-  shuffled = [];
-  // loops over array for the length of the array to be shuffled
-  for (var i = original.length; i > 0; i--) {
-    // creates a random whole number between 0 and the numeric value of the current
-    // last index of the array (changes since items are constantly being sliced out)
-    var randomNumber = Math.round(Math.random() * (original.length-1));
-    // pushes item at the index of randomly created number into empty array
-    shuffled.push(original[randomNumber]);
-    // removes item at the index of randomly created number from old array
-    original.splice(randomNumber, 1);
-  }
-  return shuffled;
-};
+  cards = shuffleArray(cards);
 
-shuffleArray(cards);
-
-cards = shuffled;
 
   //creates cards on gameBoard
   for(var i=0, length=cards.length; i<length; i++) {
@@ -53,31 +51,34 @@ cards = shuffled;
    if (cardsInPlay[0] === cardsInPlay[1]) {
      score += 1;
      tallyElement.innerHTML = score;
-     alert('You found a match! Your current score is ' + score);
+     setTimeout(function(){
+       alert('You found a match! Your current score is ' + score);
+     }, 300);
    }
    // else: clicked cards do not have the same value & corresponding alert
    // message is displayed
    else {
-     alert('Sorry, no match. Flip cards back over and then try again.');
+     setTimeout(function() {
+       alert('Sorry, no match. Flip cards back over and then try again.');
+     }, 300);
    }
 
-   /* This code is intended to reset all cards automatically after isMatch() has
-      run - BUT I decided to use a different solution (cards have to be turned
-      over 'manually' by clicking) since running this code in combination with the
-      alert box will result in the second card's front side never being displayed.
-
-      var allCards = document.getElementsByClassName('card');
-      for(j=0; j<allCards.length; j++) {
-        //resets attributes to match styles for back of card
-        allCards[j].innerHTML = '';
-        allCards[j].className = 'card';
-      } */
+      setTimeout(function() {
+        var allCards = document.getElementsByClassName('card');
+        for(j=0; j<allCards.length; j++) {
+          //resets attributes to match styles for back of card
+          allCards[j].innerHTML = '';
+          allCards[j].className = 'card';
+          allCards[j].setAttribute('clicked', 'false');
+        }
+      }, 300);
     };
+
 
     //checks to see if there are cards in play
     var isTwoCards = function() {
       //Checks value of card, displays corresponding pic)
-      if (this.getAttribute('data-card') === 'king') {
+      if(this.getAttribute('data-card') === 'king') {
         this.innerHTML = '<img src="spades-884197_640.png" alt="King of Spades" />'
         this.className = 'card front';
       }
@@ -89,8 +90,6 @@ cards = shuffled;
       /* conditional prevents false 'found match' message when same card is
       being clicked twice in a row and instead flips card to backside again */
       if (this.getAttribute('clicked') === 'true') {
-        /* would be used in combination with the automatic reset version:
-        return; */
         //resets attributes to match styles for back of card
         this.setAttribute('clicked', 'false');
         this.innerHTML = '';
