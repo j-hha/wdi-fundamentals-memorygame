@@ -59,7 +59,7 @@ var createCards = function() {
    // message is displayed
    else {
      setTimeout(function() {
-       alert('Sorry, no match. Flip cards back over and then try again.');
+       alert('Sorry, no match.');
      }, 300);
    }
 
