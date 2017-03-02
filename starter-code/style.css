@@ -70,6 +70,7 @@ nav a:hover {
 
 header {
   width: 100%;
+  min-width: 500px;
 }
 
 section {
@@ -79,7 +80,9 @@ section {
 .board {
   display: inline-block;
   width: 50%;
+  min-width: 500px;
   height: 50%;
+  background: #ccc;
 }
 
 .card {
@@ -88,8 +91,9 @@ section {
   height: 200px;
   border-radius: 10px;
   background-color: #FFFF00;
-  float: left;
+  /*float: left;*/
   margin: 8%;
+  display: inline-block;
 }
 
 .front {
@@ -100,33 +104,37 @@ section {
 .card img {
   height: 200px;
   margin: auto;
-}
-
-#resetButton {
-  padding: 10px;
-  border-radius: 10px;
-  border: 0;
-  background-color: #ffbf00;
-  box-shadow: 2px 2px 6px #808080;
-  color: #fff;
-  font-size: 16px;
+  display: block;
 }
 
 #resetButton:hover {
-  background-color: #ee5f3c;
+  color: #fff;
 }
 
 #resetButton:active {
-  background-color: #cc3612;
+  color: #ff0000;
 }
 
 aside {
-  float: left;
-  padding: 20px;
+  width: 50%;
+  min-width: 500px;
+  margin: auto;
+  background-color: #808080;
+}
+
+table {
+  margin: auto;
+}
+
+td {
+  padding: 10px 40px;
+  text-align: center;
 }
 
 footer {
+  margin-top: 40px;
   width: 100%;
+  min-width: 500px;
   background-color: #808080;
   padding: 2px;
   font-size: 16px;
