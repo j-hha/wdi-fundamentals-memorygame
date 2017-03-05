@@ -53,6 +53,7 @@ var createCards = function() {
      setTimeout(function(){
        alert('You found a match! Your current score is ' + score);
      }, 300);
+     // clear cards in play array for next try
      cardsInPlay = [];
    }
    // else: clicked cards do not have the same value & corresponding alert
@@ -60,9 +61,9 @@ var createCards = function() {
    else {
      setTimeout(function() {
        alert('Sorry, no match.');
+       // the non-matching pairs are flipped back over automatically
        var allCards = document.getElementsByClassName('card');
        for(j=0; j<allCards.length; j++) {
-         console.log(cardsInPlay);
          if (allCards[j].getAttribute('data-card') == cardsInPlay[0]) {
            allCards[j].innerHTML = '';
            allCards[j].className = 'card';
@@ -74,21 +75,11 @@ var createCards = function() {
            allCards[j].setAttribute('clicked', 'false');
          }
        }
+       // clear cards in play array for next try
        cardsInPlay = [];
-
      }, 300);
    }
-
-      // setTimeout(function() {
-      //   var allCards = document.getElementsByClassName('card');
-      //   for(j=0; j<allCards.length; j++) {
-      //     //resets attributes to match styles for back of card
-      //     allCards[j].innerHTML = '';
-      //     allCards[j].className = 'card';
-      //     allCards[j].setAttribute('clicked', 'false');
-      //   }
-      // }, 300);
-    };
+ };
 
 
     //checks to see if there are cards in play
@@ -125,7 +116,6 @@ var createCards = function() {
         if (cardsInPlay.length === 2) {
           // pass the cardsInPlay as an argument to the isMatch function
           isMatch(cardsInPlay);
-          // clear cards in play array for next try
         }
       }
     };
