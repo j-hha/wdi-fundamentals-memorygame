@@ -5,6 +5,8 @@ body {
   font-family: 'Helvetica', sans-serif;
   font-size: 20px;
   text-align: center;
+  font-weight: lighter;
+
 }
 
 * {
@@ -75,6 +77,8 @@ header {
 
 section {
   padding: 20px;
+  width: 80%;
+  margin: auto;
 }
 
 .board {
@@ -91,7 +95,6 @@ section {
   height: 200px;
   border-radius: 10px;
   background-color: #FFFF00;
-  /*float: left;*/
   margin: 8%;
   display: inline-block;
 }
@@ -107,28 +110,54 @@ section {
   display: block;
 }
 
-#resetButton:hover {
-  color: #fff;
-}
-
-#resetButton:active {
-  color: #ff0000;
+.card .correct img {
+  animation-name: example;
+  animation-duration: 2s;
 }
 
 aside {
   width: 50%;
   min-width: 500px;
-  margin: auto;
+  margin: 0 auto;
   background-color: #808080;
+  height: 40px;
+  padding: 0;
 }
 
 table {
-  margin: auto;
+  padding: 0;
+  margin: 0 auto;
+  color: #fff;
 }
 
 td {
-  padding: 10px 40px;
-  text-align: center;
+  padding: 0 80px;
+  line-height: 36px;
+  font-size: 20px;
+}
+
+#resetButton{
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 36px;
+  float: left;
+  margin-right: 10px;
+  height: 36px;
+  width: 36px;
+  text-shadow: 2px 2px 4px #000;
+}
+
+#resetButton:hover {
+  font-weight: bold;
+  color: #ffbf00;
+}
+
+#resetButton:active {
+  color: #ee5f3c;
+}
+
+#tallyElement {
+  color: #fff;
 }
 
 footer {

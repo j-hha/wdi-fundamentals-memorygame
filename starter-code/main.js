@@ -33,7 +33,6 @@ var createCards = function() {
 
   cards = shuffleArray(cards);
 
-
   //creates cards on gameBoard
   for(var i=0, length=cards.length; i<length; i++) {
     var newCard = document.createElement('div');
@@ -54,24 +53,41 @@ var createCards = function() {
      setTimeout(function(){
        alert('You found a match! Your current score is ' + score);
      }, 300);
+     cardsInPlay = [];
    }
    // else: clicked cards do not have the same value & corresponding alert
    // message is displayed
    else {
      setTimeout(function() {
        alert('Sorry, no match.');
+       var allCards = document.getElementsByClassName('card');
+       for(j=0; j<allCards.length; j++) {
+         console.log(cardsInPlay);
+         if (allCards[j].getAttribute('data-card') == cardsInPlay[0]) {
+           allCards[j].innerHTML = '';
+           allCards[j].className = 'card';
+           allCards[j].setAttribute('clicked', 'false');
+         }
+         else if (allCards[j].getAttribute('data-card') == cardsInPlay[1]) {
+           allCards[j].innerHTML = '';
+           allCards[j].className = 'card';
+           allCards[j].setAttribute('clicked', 'false');
+         }
+       }
+       cardsInPlay = [];
+
      }, 300);
    }
 
-      setTimeout(function() {
-        var allCards = document.getElementsByClassName('card');
-        for(j=0; j<allCards.length; j++) {
-          //resets attributes to match styles for back of card
-          allCards[j].innerHTML = '';
-          allCards[j].className = 'card';
-          allCards[j].setAttribute('clicked', 'false');
-        }
-      }, 300);
+      // setTimeout(function() {
+      //   var allCards = document.getElementsByClassName('card');
+      //   for(j=0; j<allCards.length; j++) {
+      //     //resets attributes to match styles for back of card
+      //     allCards[j].innerHTML = '';
+      //     allCards[j].className = 'card';
+      //     allCards[j].setAttribute('clicked', 'false');
+      //   }
+      // }, 300);
     };
 
 
@@ -110,7 +126,6 @@ var createCards = function() {
           // pass the cardsInPlay as an argument to the isMatch function
           isMatch(cardsInPlay);
           // clear cards in play array for next try
-          cardsInPlay = [];
         }
       }
     };
